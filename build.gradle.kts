@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath(androidBuildTools)
         classpath(kotlinGradlePlugin)
-        classpath(kotlinComposePlugin)
+        //classpath(kotlinComposePlugin)
     }
 }
 
