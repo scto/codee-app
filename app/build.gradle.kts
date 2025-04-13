@@ -1,6 +1,6 @@
 plugins {
-    alias(Plugin.ANDROID_APPLICATION)
-    alias(Plugin.KOTLIN_ANDROID)
+    id(Plugin.ANDROID_APPLICATION)
+    id(Plugin.KOTLIN_ANDROID)
 }
 
 android {
