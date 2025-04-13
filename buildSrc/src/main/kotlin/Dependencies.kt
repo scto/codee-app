@@ -14,10 +14,14 @@ val DependencyHandlerScope.androidKtCore: String
     get() = "androidx.core:core-ktx:1.5.0"
 
 val DependencyHandlerScope.appCompat: String
-    get() = "androidx.appcompat:appcompat:1.4.0-alpha03"
+    get() = "androidx.appcompat:appcompat:1.7
+    0"
 
 val DependencyHandlerScope.material: String
-    get() = "com.google.android.material:material:1.5.0-alpha01"
+    get() = "com.google.android.material:material:1.12.0"
+
+val DependencyHandlerScope.composeUI: String
+    get() = "androidx.compose:compose-bom:$COMPOSE"
 
 val DependencyHandlerScope.composeUI: String
     get() = "androidx.compose.ui:ui:$COMPOSE"
@@ -29,10 +33,10 @@ val DependencyHandlerScope.composeUITooling: String
     get() = "androidx.compose.ui:ui-tooling:$COMPOSE"
 
 val DependencyHandlerScope.androidxLifecycle: String
-    get() = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha02"
+    get() = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.5"
 
 val DependencyHandlerScope.activityCompose: String
-    get() = "androidx.activity:activity-compose:1.3.0-rc02"
+    get() = "androidx.activity:activity-compose:1.10.1"
 
 val DependencyHandlerScope.composeJUNIT: String
     get() = "androidx.compose.ui:ui-test-junit4:$COMPOSE"
@@ -47,7 +51,7 @@ val DependencyHandlerScope.scriptingDependencies: Any
     get() = kotlin("scripting-dependencies")
 
 val DependencyHandlerScope.androidBuildTools: String
-    get() = "com.android.tools.build:gradle:7.1.0-alpha04"
+    get() = "com.android.tools.build:gradle:8.6.0"
 
 val DependencyHandlerScope.kotlinGradlePlugin: String
     get() = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.KOTLIN}"
@@ -70,7 +74,7 @@ val DependencyHandlerScope.kScript get() = "fun.kotlingang.kscript:kscript:0.1.0
 
 val DependencyHandlerScope.pluginsAPI get() = project(":plugins-api")
 
-val DependencyHandlerScope.composeNav get() = "androidx.navigation:navigation-compose:2.4.0-alpha05"
+val DependencyHandlerScope.composeNav get() = "androidx.navigation:navigation-compose:2.8.5"
 
 val DependencyHandlerScope.`app-core` get() = project(":app-core")
 

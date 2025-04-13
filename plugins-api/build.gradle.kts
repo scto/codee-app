@@ -4,7 +4,6 @@ plugins {
     kotlin(Plugin.JVM)
 }
 
-
 group = "${ApplicationConfig.PACKAGE}.plugins.api"
 version = ApplicationConfig.APPLICATION_VERSION_NAME
 
