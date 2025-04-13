@@ -1,6 +1,7 @@
 @file:Suppress("unused", "ObjectPropertyName")
 
 import Version.COMPOSE
+import Version.KOTLIN
 import org.gradle.api.artifacts.Dependency
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.kotlin
@@ -19,7 +20,7 @@ val DependencyHandlerScope.material: String
     get() = "com.google.android.material:material:${Version.MATERIAL}"
 
 val DependencyHandlerScope.composeUI: String
-    get() = "androidx.compose.ui:ui::${Version.COMPOSE}"
+    get() = "androidx.compose.ui:ui:${Version.COMPOSE}"
 
 val DependencyHandlerScope.composeMaterial: String
     get() = "androidx.compose.material:material:${Version.COMPOSE}"
