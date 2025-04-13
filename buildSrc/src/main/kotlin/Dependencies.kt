@@ -21,9 +21,6 @@ val DependencyHandlerScope.material: String
     get() = "com.google.android.material:material:1.12.0"
 
 val DependencyHandlerScope.composeUI: String
-    get() = "androidx.compose:compose-bom:$COMPOSE"
-
-val DependencyHandlerScope.composeUI: String
     get() = "androidx.compose.ui:ui:$COMPOSE"
 
 val DependencyHandlerScope.composeMaterial: String
