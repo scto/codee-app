@@ -19,13 +19,13 @@ val DependencyHandlerScope.material: String
     get() = "com.google.android.material:material:${Version.MATERIAL}"
 
 val DependencyHandlerScope.composeUI: String
-    get() = "androidx.compose.ui:ui:$COMPOSE"
+    get() = "androidx.compose.ui:ui::${Version.COMPOSE}"
 
 val DependencyHandlerScope.composeMaterial: String
-    get() = "androidx.compose.material:material:$COMPOSE"
+    get() = "androidx.compose.material:material:${Version.COMPOSE}"
 
 val DependencyHandlerScope.composeUITooling: String
-    get() = "androidx.compose.ui:ui-tooling:$COMPOSE"
+    get() = "androidx.compose.ui:ui-tooling:${Version.COMPOSE}"
 
 val DependencyHandlerScope.androidxLifecycle: String
     get() = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.5"
