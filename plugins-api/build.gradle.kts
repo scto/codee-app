@@ -20,8 +20,9 @@ dependencies {
     implementation(resources)
     implementation(coroutines)
 }
-
+/*
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
     languageVersion = "1.8"
 }
+*/
