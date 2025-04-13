@@ -1,6 +1,6 @@
 plugins {
-    id(Plugin.ANDROID_LIBRARY)
-    id(Plugin.KOTLIN_ANDROID)
+    alias(Plugin.ANDROID_LIBRARY)
+    alias(Plugin.KOTLIN_ANDROID)
 }
 
 android {
@@ -22,6 +22,7 @@ android {
             )
         }
     }
+    
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

@@ -1,6 +1,6 @@
 plugins {
-    id(Plugin.ANDROID_APPLICATION)
-    id(Plugin.KOTLIN_ANDROID)
+    alias(Plugin.ANDROID_APPLICATION)
+    alias(Plugin.KOTLIN_ANDROID)
 }
 
 android {
@@ -62,6 +62,8 @@ dependencies {
     implementation(resources)
     implementation(composeAccompanistSystemUiController)
     implementation(composeAccompanistPager)
+    
     testImplementation(jUnit)
+    
     androidTestImplementation(composeJUNIT)
 }
