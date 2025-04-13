@@ -6,19 +6,17 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.project
 
-
 val DependencyHandlerScope.coroutines: String
     get() = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.COROUTINES}"
 
 val DependencyHandlerScope.androidKtCore: String
-    get() = "androidx.core:core-ktx:1.5.0"
+    get() = "androidx.core:core-ktx::${Version.CORE_KTX}"
 
 val DependencyHandlerScope.appCompat: String
-    get() = "androidx.appcompat:appcompat:1.7
-    0"
+    get() = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
 
 val DependencyHandlerScope.material: String
-    get() = "com.google.android.material:material:1.12.0"
+    get() = "com.google.android.material:material:${Version.MATERIAL}"
 
 val DependencyHandlerScope.composeUI: String
     get() = "androidx.compose.ui:ui:$COMPOSE"
