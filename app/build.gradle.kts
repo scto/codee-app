@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace = "${ApplicationConfig.PACKAGE}.app"
+    
     compileSdk = 34
     buildToolsVersion = ApplicationConfig.BUILD_TOOLS_VERSION
 
