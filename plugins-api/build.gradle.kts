@@ -24,5 +24,5 @@ dependencies {
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    languageVersion = "1.5"
+    languageVersion = "1.8"
 }
