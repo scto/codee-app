@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "${ApplicationConfig.PACKAGE}.app-core"
     compileSdk = ApplicationConfig.TARGET_SDK_VERSION
 
     defaultConfig {
