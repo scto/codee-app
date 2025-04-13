@@ -1,6 +1,7 @@
 plugins {
     id(Plugin.ANDROID_APPLICATION)
     id(Plugin.KOTLIN_ANDROID)
+    id(Plugin.KOTLIN_COMPOSE)
 }
 
 android {

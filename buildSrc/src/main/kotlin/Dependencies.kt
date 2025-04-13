@@ -51,6 +51,9 @@ val DependencyHandlerScope.androidBuildTools: String
 val DependencyHandlerScope.kotlinGradlePlugin: String
     get() = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.KOTLIN}"
 
+val DependencyHandlerScope.kotlinComposePlugin: String
+    get() = "org.jetbrains.kotlin.plugin.compose:${Version.KOTLIN}"
+    
 val DependencyHandlerScope.androidxKDS: String get() = "fun.kotlingang.kds:extensions-androidx:1.1.0"
 
 val DependencyHandlerScope.scriptRuntime get() = kotlin("script-runtime")

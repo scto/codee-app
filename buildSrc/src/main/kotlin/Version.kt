@@ -10,7 +10,7 @@ object Version {
     
     const val CORE_KTX = "1.5.0"
     
-    const val COMPOSEBOM = "2025.02.00"
+    //const val COMPOSEBOM = "2025.02.00"
     
     const val COMPOSE_ACCOMPANIST = "0.36.0"
 }
