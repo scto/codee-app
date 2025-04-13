@@ -8,23 +8,26 @@ import kotlin.script.experimental.jvm.util.isError
 
 class SimplePluginLoader(
     private val manifestBlock: ManifestScope.() -> Unit,
-    private val pluginBlock: PluginScope.() -> Unit
+    private val pluginBlock: PluginScope.() -> Unit,
 ) : PluginLoader {
     override suspend fun load(
         manifestScope: ManifestScope,
-        pluginScope: PluginScope
+        pluginScope: PluginScope,
     ): ResultWithDiagnostics<Unit> {
         try {
             val manifestLoader = SimpleManifestScopeLoader(manifestBlock, manifestScope)
             val manifestResult = manifestLoader.load()
-            if(manifestResult.isError())
+            if (manifestResult.isError())
                 return ResultWithDiagnostics.Failure(manifestResult.reports)
             val pluginResult = SimplePluginScopeLoader(pluginScope, pluginBlock).load()
-            return ResultWithDiagnostics.Success(Unit,manifestResult.reports + pluginResult.reports)
+            return ResultWithDiagnostics.Success(
+                Unit,
+                manifestResult.reports + pluginResult.reports,
+            )
         } catch (e: Exception) {
-            return ResultWithDiagnostics.Failure(listOf(
-                ScriptDiagnostic(-1, e.toString(), exception = e)
-            ))
+            return ResultWithDiagnostics.Failure(
+                listOf(ScriptDiagnostic(-1, e.toString(), exception = e))
+            )
         }
     }
 }

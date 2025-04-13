@@ -3,7 +3,6 @@ package com.codee.app.resources.theme
 import com.codee.app.resources.Color
 import com.codee.app.resources.Hex
 
-
 public open class LightThemeColors : ThemeColors {
     override val primary: Color = Color.WHITE
     override val primaryVariant: Color = Hex("#cccccc")

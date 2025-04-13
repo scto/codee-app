@@ -10,16 +10,16 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 public interface PluginApiContainer {
-    /**
-     * All registered plugins api.
-     */
+    /** All registered plugins api. */
     public val registered: SharedFlow<PluginApi>
 
     /**
-     * Registers API for external access (you can register multiple
-     * versions (currentVersion cannot be the same)).
+     * Registers API for external access (you can register multiple versions (currentVersion cannot
+     * be the same)).
+     *
      * @param instance - instance of [T].
-     * @return [Boolean] is registered or not (As for now, the error can only be in the same version).
+     * @return [Boolean] is registered or not (As for now, the error can only be in the same
+     *   version).
      */
     public fun <T : PluginApi> register(instance: T): Boolean
 }
@@ -31,49 +31,45 @@ public inline fun <reified T : PluginApi> PluginApiContainer.firstWithType(
 }
 
 public inline fun <reified T : PluginApi> PluginApiContainer.firstCompatibleWithType(
-    version: Int, crossinline handler: T.() -> Unit
+    version: Int,
+    crossinline handler: T.() -> Unit,
 ): Unit = registered.firstCompatibleWithType(version, handler)
 
-/**
- * Gets first registered [T].
- * Not recommended to use in order to compatibility.
- */
+/** Gets first registered [T]. Not recommended to use in order to compatibility. */
 @OptIn(DelicateCoroutinesApi::class)
 public inline fun <reified T : PluginApi> SharedFlow<PluginApi>.firstWithType(
     crossinline handler: T.() -> Unit
 ) {
-    GlobalScope.launch {
-        handler(filterIsInstance<T>().first())
-    }
+    GlobalScope.launch { handler(filterIsInstance<T>().first()) }
 }
 
 /**
  * Gets first compatible for [version] with [T]. Prefer to get version that specified in [version],
  * but if there no such version, gets first that in range of support in api.
+ *
  * @param version - version of api.
  * @param handler - type handler.
  */
 @OptIn(DelicateCoroutinesApi::class)
 public inline fun <reified T : PluginApi> SharedFlow<PluginApi>.firstCompatibleWithType(
-    version: Int, crossinline handler: T.() -> Unit
+    version: Int,
+    crossinline handler: T.() -> Unit,
 ) {
     GlobalScope.launch {
-        handler(filterIsInstance<T>().first {
-            it.compatibilitySettings.currentVersion == version
-                    || it.compatibilitySettings.minSupportedVersion >= version
-                    && it.compatibilitySettings.maxSupportedVersion ?: version <= version
-        })
+        handler(
+            filterIsInstance<T>().first {
+                it.compatibilitySettings.currentVersion == version ||
+                    it.compatibilitySettings.minSupportedVersion >= version &&
+                        it.compatibilitySettings.maxSupportedVersion ?: version <= version
+            }
+        )
     }
 }
 
-/**
- * Gets every registered [T] and returns it in [handler].
- */
+/** Gets every registered [T] and returns it in [handler]. */
 @OptIn(DelicateCoroutinesApi::class)
 public inline fun <reified T : PluginApi> SharedFlow<PluginApi>.onEachType(
     noinline handler: (T) -> Unit
 ) {
-    GlobalScope.launch {
-        filterIsInstance<T>().onEach(handler::invoke)
-    }
+    GlobalScope.launch { filterIsInstance<T>().onEach(handler::invoke) }
 }

@@ -7,6 +7,7 @@ import kotlin.script.experimental.api.ResultWithDiagnostics
 interface DependencyResolver<M : ExternalResolverMetadata> {
     /**
      * Resolves [metadata].
+     *
      * @param metadata - metadata to resolve.
      */
     suspend fun resolve(metadata: M): ResultWithDiagnostics<Collection<File>>

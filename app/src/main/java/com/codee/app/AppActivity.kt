@@ -10,10 +10,6 @@ import com.codee.app.screens.main.MainView
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            CodeeTheme {
-                MainView(rememberNavController())
-            }
-        }
+        setContent { CodeeTheme { MainView(rememberNavController()) } }
     }
 }

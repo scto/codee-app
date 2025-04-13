@@ -9,12 +9,11 @@ import androidx.navigation.compose.composable
 import com.codee.app.screens.projects.ProjectsView
 
 @Composable
-fun MainView(navController: NavHostController) = NavHost(
-    navController = navController,
-    startDestination = "projects",
-    modifier = Modifier.fillMaxSize()
-) {
-    composable("projects") {
-        ProjectsView()
+fun MainView(navController: NavHostController) =
+    NavHost(
+        navController = navController,
+        startDestination = "projects",
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        composable("projects") { ProjectsView() }
     }
-}

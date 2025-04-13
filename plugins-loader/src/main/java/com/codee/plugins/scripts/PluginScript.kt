@@ -12,20 +12,20 @@ import kotlin.script.experimental.jvm.updateClasspath
 @KotlinScript(
     fileExtension = "plugin.kts",
     compilationConfiguration = PluginScriptDefinition::class,
-    evaluationConfiguration = PluginScriptConfiguration::class
+    evaluationConfiguration = PluginScriptConfiguration::class,
 )
 abstract class PluginScript
 
-class PluginScriptDefinition(classpath: Collection<File>) : ScriptCompilationConfiguration({
-    defaultImports("com.codee.plugins.api.*")
-    implicitReceivers(PluginScope::class)
-    jvm {
-        dependenciesFromClassContext(PluginScript::class, wholeClasspath = true)
-    }
-    updateClasspath(classpathFrom(PluginScope::class) + classpath)
-})
+class PluginScriptDefinition(classpath: Collection<File>) :
+    ScriptCompilationConfiguration({
+        defaultImports("com.codee.plugins.api.*")
+        implicitReceivers(PluginScope::class)
+        jvm { dependenciesFromClassContext(PluginScript::class, wholeClasspath = true) }
+        updateClasspath(classpathFrom(PluginScope::class) + classpath)
+    })
 
-class PluginScriptConfiguration(pluginScope: PluginScope) : ScriptEvaluationConfiguration({
-    scriptsInstancesSharing(true)
-    implicitReceivers(pluginScope)
-})
+class PluginScriptConfiguration(pluginScope: PluginScope) :
+    ScriptEvaluationConfiguration({
+        scriptsInstancesSharing(true)
+        implicitReceivers(pluginScope)
+    })

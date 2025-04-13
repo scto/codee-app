@@ -12,7 +12,7 @@ import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 class ScriptPluginScopeLoader(
     override val scope: PluginScope,
     private val file: File,
-    classpath: List<File>
+    classpath: List<File>,
 ) : PluginScopeLoader<EvaluationResult> {
     private val jvmHost = BasicJvmScriptingHost()
     private val compilationConfiguration = PluginScriptDefinition(classpath)
@@ -22,7 +22,7 @@ class ScriptPluginScopeLoader(
         return jvmHost.eval(
             file.toScriptSource(),
             compilationConfiguration,
-            evaluationConfiguration
+            evaluationConfiguration,
         )
     }
 }

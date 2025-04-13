@@ -19,7 +19,7 @@ class PluginScriptLoader(scope: PluginScope, classpath: Collection<File>) : File
         return jvmHost.eval(
             scriptFile.toScriptSource(),
             compilationConfiguration,
-            evaluationConfiguration
+            evaluationConfiguration,
         )
     }
 }

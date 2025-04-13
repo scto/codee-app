@@ -5,7 +5,7 @@ import kotlin.properties.Delegates
 public data class PluginMetadata(
     public val name: String,
     public val author: String,
-    public val version: Int
+    public val version: Int,
 )
 
 public class PluginMetadataBuilder {

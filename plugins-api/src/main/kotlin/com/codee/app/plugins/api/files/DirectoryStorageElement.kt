@@ -4,24 +4,19 @@ public sealed interface DirectoryStorageElement : StorageElement {
 
     /**
      * Gets [StorageElement] at current path + [name].
+     *
      * @return [StorageElement].
      */
     public operator fun get(name: String): StorageElement
 
-    /**
-     * Root directory that cannot go back.
-     */
+    /** Root directory that cannot go back. */
     public interface RootDirectoryStorageElement : DirectoryStorageElement
 
-    /**
-     * Root directory that cannot go back.
-     */
+    /** Root directory that cannot go back. */
     public interface ChildDirectoryStorageElement : DirectoryStorageElement {
         public val parent: DirectoryStorageElement
 
-        /**
-         * Removes directory at current path.
-         */
+        /** Removes directory at current path. */
         public suspend fun delete()
     }
 }

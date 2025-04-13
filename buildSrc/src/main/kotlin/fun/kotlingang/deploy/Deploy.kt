@@ -1,5 +1,6 @@
 package `fun`.kotlingang.deploy
 
+import kotlin.reflect.KProperty0
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
@@ -8,7 +9,6 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.the
-import kotlin.reflect.KProperty0
 
 internal fun deployError(message: String) {
     throw DeployException(message)
@@ -16,18 +16,18 @@ internal fun deployError(message: String) {
 
 /**
  * Checks properties for null. If it is null, throws [DeployException].
+ *
  * @param fields - fields to check.
  */
 internal fun <T> notNullPropertiesOrException(vararg fields: KProperty0<T?>) =
     fields.forEach { field ->
         if (field.get() == null)
-            throw DeployException("Field for name `${field.name}` is null. Should be provided for deploy task.")
+            throw DeployException(
+                "Field for name `${field.name}` is null. Should be provided for deploy task."
+            )
     }
 
-/**
- * Deploy task.
- * To applying should be specified [DeployConfiguration].
- */
+/** Deploy task. To applying should be specified [DeployConfiguration]. */
 class Deploy : Plugin<Project> {
     override fun apply(target: Project) {
         target.apply(plugin = "maven-publish")
@@ -45,7 +45,7 @@ class Deploy : Plugin<Project> {
                 config::libraryVersion,
                 config::libraryName,
                 config::libraryComponents,
-                config::deployTaskName
+                config::deployTaskName,
             )
             project.the<PublishingExtension>().apply {
                 publications {
@@ -64,9 +64,7 @@ class Deploy : Plugin<Project> {
                 }
                 repositories {
                     maven {
-                        url = uri(
-                            "sftp://${config.host}:22/${config.destination}"
-                        )
+                        url = uri("sftp://${config.host}:22/${config.destination}")
 
                         credentials {
                             username = config.user

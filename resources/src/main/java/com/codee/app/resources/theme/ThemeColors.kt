@@ -4,6 +4,7 @@ import com.codee.app.resources.Color
 
 /**
  * Codee theme colors.
+ *
  * @see androidx.compose.material.Colors
  */
 public sealed interface ThemeColors {

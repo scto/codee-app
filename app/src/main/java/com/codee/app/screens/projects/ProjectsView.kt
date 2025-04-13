@@ -23,54 +23,37 @@ import com.codee.app.core.CodeeStrings
 import com.codee.app.core.extensions.localize
 
 @Composable
-fun ProjectsView() = Scaffold(
-    topBar = { Toolbar() },
-    floatingActionButton = { FAB() }
-) {
-    LazyColumn {
-        items(listOf(1, 2, 3)) {
-            ProjectItem(name = "Some project")
+fun ProjectsView() =
+    Scaffold(topBar = { Toolbar() }, floatingActionButton = { FAB() }) {
+        LazyColumn { items(listOf(1, 2, 3)) { ProjectItem(name = "Some project") } }
+    }
+
+@Composable
+private fun Toolbar() = TopAppBar(title = { Text(text = CodeeStrings.projects.localize()) })
+
+@Composable
+private fun FAB() =
+    FloatingActionButton(onClick = {}) {
+        Image(imageVector = Icons.Outlined.Add, contentDescription = null)
+    }
+
+@Composable
+private fun ProjectItem(name: String) =
+    Row(
+        modifier = Modifier.selectable(selected = false) {},
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Image(
+            painter = painterResource(id = R.mipmap.ic_launcher),
+            modifier = Modifier.size(60.dp).padding(12.dp),
+            contentDescription = "test",
+        )
+        Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+            Text(text = name, fontSize = 18.sp)
+            Text(
+                modifier = Modifier.alpha(0.8F),
+                text = "/storage/emulated/0/data/somewhere",
+                fontSize = 12.sp,
+            )
         }
     }
-}
-
-@Composable
-private fun Toolbar() = TopAppBar(
-    title = { Text(text = CodeeStrings.projects.localize()) }
-)
-
-@Composable
-private fun FAB() = FloatingActionButton(
-    onClick = {
-
-    }) {
-    Image(
-        imageVector = Icons.Outlined.Add,
-        contentDescription = null
-    )
-}
-
-@Composable
-private fun ProjectItem(name: String) = Row(
-    modifier = Modifier
-        .selectable(selected = false) {
-
-        },
-    verticalAlignment = Alignment.CenterVertically
-) {
-    Image(
-        painter = painterResource(id = R.mipmap.ic_launcher),
-        modifier = Modifier
-            .size(60.dp)
-            .padding(12.dp),
-        contentDescription = "test"
-    )
-    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
-        Text(text = name, fontSize = 18.sp)
-        Text(
-            modifier = Modifier.alpha(0.8F),
-            text = "/storage/emulated/0/data/somewhere",
-            fontSize = 12.sp
-        )
-    }
-}

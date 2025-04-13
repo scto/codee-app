@@ -6,7 +6,6 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.project
 
-
 val DependencyHandlerScope.coroutines: String
     get() = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.COROUTINES}"
 
@@ -52,31 +51,44 @@ val DependencyHandlerScope.androidBuildTools: String
 val DependencyHandlerScope.kotlinGradlePlugin: String
     get() = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.KOTLIN}"
 
-val DependencyHandlerScope.androidxKDS: String get() = "fun.kotlingang.kds:extensions-androidx:1.1.0"
+val DependencyHandlerScope.androidxKDS: String
+    get() = "fun.kotlingang.kds:extensions-androidx:1.1.0"
 
-val DependencyHandlerScope.scriptRuntime get() = kotlin("script-runtime")
+val DependencyHandlerScope.scriptRuntime
+    get() = kotlin("script-runtime")
 
-val DependencyHandlerScope.compilerEmbeddable get() = kotlin("compiler-embeddable")
+val DependencyHandlerScope.compilerEmbeddable
+    get() = kotlin("compiler-embeddable")
 
-val DependencyHandlerScope.scriptUtil get() = kotlin("script-util")
+val DependencyHandlerScope.scriptUtil
+    get() = kotlin("script-util")
 
-val DependencyHandlerScope.scriptingCompilerEmbeddable get() = kotlin("script-util")
+val DependencyHandlerScope.scriptingCompilerEmbeddable
+    get() = kotlin("script-util")
 
-val DependencyHandlerScope.sharedKDS: String get() = "fun.kotlingang.kds:json-shared-preferences:1.1.0"
+val DependencyHandlerScope.sharedKDS: String
+    get() = "fun.kotlingang.kds:json-shared-preferences:1.1.0"
 
-val DependencyHandlerScope.filesKDS: String get() = "fun.kotlingang.kds:json-files:1.0.1"
+val DependencyHandlerScope.filesKDS: String
+    get() = "fun.kotlingang.kds:json-files:1.0.1"
 
-val DependencyHandlerScope.kScript get() = "fun.kotlingang.kscript:kscript:0.1.0"
+val DependencyHandlerScope.kScript
+    get() = "fun.kotlingang.kscript:kscript:0.1.0"
 
-val DependencyHandlerScope.pluginsAPI get() = project(":plugins-api")
+val DependencyHandlerScope.pluginsAPI
+    get() = project(":plugins-api")
 
-val DependencyHandlerScope.composeNav get() = "androidx.navigation:navigation-compose:2.4.0-alpha05"
+val DependencyHandlerScope.composeNav
+    get() = "androidx.navigation:navigation-compose:2.4.0-alpha05"
 
-val DependencyHandlerScope.`app-core` get() = project(":app-core")
+val DependencyHandlerScope.`app-core`
+    get() = project(":app-core")
 
-val DependencyHandlerScope.ktScriptingMavenDependencies get() = kotlin("scripting-dependencies-maven")
+val DependencyHandlerScope.ktScriptingMavenDependencies
+    get() = kotlin("scripting-dependencies-maven")
 
-val DependencyHandlerScope.compilerJvmHost get() = kotlin("scripting-jvm-host")
+val DependencyHandlerScope.compilerJvmHost
+    get() = kotlin("scripting-jvm-host")
 
 @Suppress("ObjectPropertyName")
 val DependencyHandlerScope.resources

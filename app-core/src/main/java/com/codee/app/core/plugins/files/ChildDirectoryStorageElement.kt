@@ -1,32 +1,32 @@
 package com.codee.app.core.plugins.files
 
 import com.codee.app.plugins.api.files.DirectoryStorageElement
+import com.codee.app.plugins.api.files.DirectoryStorageElement.ChildDirectoryStorageElement as IChildDirectoryStorageElement
 import com.codee.app.plugins.api.files.StorageElement
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.File
-import com.codee.app.plugins.api.files.DirectoryStorageElement.ChildDirectoryStorageElement as IChildDirectoryStorageElement
 
 class ChildDirectoryStorageElement(private val rootDirectory: File, private val origin: File) :
     IChildDirectoryStorageElement {
     override val parent: DirectoryStorageElement
-        get() = if (origin.parentFile!!.absolutePath == rootDirectory.absolutePath)
-            RootDirectoryStorageElement(origin.parentFile!!)
-        else ChildDirectoryStorageElement(rootDirectory, origin)
+        get() =
+            if (origin.parentFile!!.absolutePath == rootDirectory.absolutePath)
+                RootDirectoryStorageElement(origin.parentFile!!)
+            else ChildDirectoryStorageElement(rootDirectory, origin)
 
-    override suspend fun delete(): Unit = withContext(Dispatchers.IO) {
-        origin.delete()
-    }
+    override suspend fun delete(): Unit = withContext(Dispatchers.IO) { origin.delete() }
 
     override fun get(name: String): StorageElement {
         val file = File(origin, name)
         if (file.absolutePath.startsWith(origin.absolutePath)) {
-            return if (!file.exists())
-                EmptyStorageElement(file, origin)
-            else if (file.isFile)
-                FileStorageElement(file, rootDirectory)
+            return if (!file.exists()) EmptyStorageElement(file, origin)
+            else if (file.isFile) FileStorageElement(file, rootDirectory)
             else ChildDirectoryStorageElement(origin, file)
-        } else throw SecurityException("Unable to get file at ${file.absolutePath}, you don't have such permission.")
+        } else
+            throw SecurityException(
+                "Unable to get file at ${file.absolutePath}, you don't have such permission."
+            )
     }
 
     override val name: String
@@ -34,5 +34,4 @@ class ChildDirectoryStorageElement(private val rootDirectory: File, private val 
 
     override val path: String
         get() = origin.path.replace(rootDirectory.path, "")
-
 }

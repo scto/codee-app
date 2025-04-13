@@ -12,20 +12,20 @@ import kotlin.script.experimental.jvm.updateClasspath
 @KotlinScript(
     fileExtension = "manifest.kts",
     compilationConfiguration = ManifestScriptDefinition::class,
-    evaluationConfiguration = ManifestScriptConfiguration::class
+    evaluationConfiguration = ManifestScriptConfiguration::class,
 )
 abstract class ManifestScript
 
-class ManifestScriptDefinition : ScriptCompilationConfiguration({
-    defaultImports("com.codee.plugins.api.*")
-    implicitReceivers(ManifestScope::class)
-    jvm {
-        dependenciesFromClassContext(ManifestScript::class, wholeClasspath = true)
-    }
-    updateClasspath(classpathFrom(ManifestScope::class, DependenciesScope::class))
-})
+class ManifestScriptDefinition :
+    ScriptCompilationConfiguration({
+        defaultImports("com.codee.plugins.api.*")
+        implicitReceivers(ManifestScope::class)
+        jvm { dependenciesFromClassContext(ManifestScript::class, wholeClasspath = true) }
+        updateClasspath(classpathFrom(ManifestScope::class, DependenciesScope::class))
+    })
 
-class ManifestScriptConfiguration(manifestScope: ManifestScope) : ScriptEvaluationConfiguration({
-    scriptsInstancesSharing(true)
-    implicitReceivers(manifestScope)
-})
+class ManifestScriptConfiguration(manifestScope: ManifestScope) :
+    ScriptEvaluationConfiguration({
+        scriptsInstancesSharing(true)
+        implicitReceivers(manifestScope)
+    })

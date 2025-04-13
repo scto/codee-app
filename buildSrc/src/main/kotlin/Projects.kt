@@ -1,16 +1,15 @@
 import `fun`.kotlingang.deploy.Deploy
 import `fun`.kotlingang.deploy.DeployConfiguration
+import java.io.File
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.util.GUtil.loadProperties
-import java.io.File
 
 /**
- * Enabling maven publish task for library.
- * if `deploy.properties` exists in project folder.
- * deploy.properties should have next fields: host(server remote address), user (sftp user on remote server),
- * password (user's password), destination (destination folder path on remote server).
+ * Enabling maven publish task for library. if `deploy.properties` exists in project folder.
+ * deploy.properties should have next fields: host(server remote address), user (sftp user on remote
+ * server), password (user's password), destination (destination folder path on remote server).
  */
 fun Project.coreDeploy() {
     val deployPropertiesFile: File = rootProject.file("deploy.properties")
