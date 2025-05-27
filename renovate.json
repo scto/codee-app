@@ -6,7 +6,7 @@
   ],
   "automerge": false,
   "forkProcessing": "enabled",
-  "baseBranches": ["dev"],
+  "baseBranches": ["master"],
   "labels": [
     "dependencies"
   ]
