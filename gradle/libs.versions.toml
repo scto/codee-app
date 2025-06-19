@@ -16,7 +16,7 @@ constraint-layout = "2.1.4"
 androidx-navigation = "2.8.5"
 about-libraries = "11.1.0"
 
-compose-bom = "2025.02.00"
+compose-bom = "2025.06.01"
 
 junit = "4.13.2"
 junit-version = "1.2.1"
